@@ -74,11 +74,79 @@ if (friends.includes('Steven')) {
 } */
 
 
+/* 
 const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
+    job: 'teacher',
     age: 2037 - 1991,
     friends: [`Micheal`, `Peter`, `Steven`]
 };
 
+console.log(jonas.lastName);
+console.log(jonas[`lastName`]);
+console.log(`${jonas['firstName']} ${jonas['lastName']}`);
+
+// const interestedIn = prompt(
+//     `What do you want to know about Jonas? Choose between fistNAme, lastName, age, job, and frieds`
+// );
+
+// if (jonas[interestedIn]) {
+//     console.log(`${jonas[interestedIn]}`);
+// } else {
+//     console.log(`Wrong request!`);
+// }
+
+jonas.location = `Portugal`;
+jonas[`twitter`] = `@jonasschmedtman`;
 console.log(jonas);
+
+//  jonas has 3 friends, and his best friend is Michael
+jonas.friendsSize = jonas.friends.length;
+jonas.bestFriend = jonas.friends[0];
+console.log(jonas.bestFriend);
+ */
+
+/* 
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    job: 'teacher',
+    birthYeah: 1992,
+    friends: [`Micheal`, `Peter`, `Steven`],
+    hasDriversLicense: true,
+    calcAge: function () {
+        this.age = 2037 - this.birthYeah;
+        return this.age;
+    }
+    // calcAge: function () {
+    //     return 2037 - this.birthYeah;
+    // }
+
+};
+
+console.log(jonas.calcAge());
+console.log(jonas.age);
+console.log(jonas.age);
+console.log(jonas.age);
+ */
+
+//  mass / height ** 2 => Bmi 
+
+class BmiClass {
+    constructor(name, mass, height) {
+        this.name = name;
+        this.mass = mass;
+        this.height = height;
+        this.bmicCal = function () {
+            this.bmi = mass / (this.height ** 2);
+            return this.bmi;
+        };
+        this.bmicCal();
+    }
+};
+
+const test = new BmiClass('test', 76, 1.76);
+console.log(test.bmi);
+
+
