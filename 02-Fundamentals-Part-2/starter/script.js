@@ -150,3 +150,6 @@ const test = new BmiClass('test', 76, 1.76);
 console.log(test.bmi);
 
 
+for (let i = 1; i <= 10; i++) {
+    console.log(`test ${i}`);
+}
