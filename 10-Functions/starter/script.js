@@ -190,6 +190,14 @@ document.querySelector('.buy').addEventListener(
     }
 );
 
-
-
-
+(() => {
+    let color = true;
+    const header = document.querySelector(`h1`);
+    header.style.color = `red`;
+    document.querySelector(`body`).addEventListener(
+        `click`, () => {
+            if (color) { header.style.color = `blue`; color = false; }
+            else { header.style.color = `red`; color = true; }
+        }
+    )
+})();

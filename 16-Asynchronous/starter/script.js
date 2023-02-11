@@ -109,43 +109,93 @@ const getCountryAndNeighbour = function (country) {
   request.send();
 */
 
-const url = (firstResource, secondResource) => {
-  return `https://restcountries.com/v3.1/${firstResource}/${secondResource}`
+/* 
+  const url = (firstResource, secondResource) => {
+    return `https://restcountries.com/v3.1/${firstResource}/${secondResource}`
+  };
+
+  const getJson = function (firstResource, secondResource) {
+    return fetch(`${url(firstResource, secondResource)}`)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Country no find ${response.status}`);
+        return response.json()
+      })
+  };
+
+  const getCountryData = function (country) {
+
+    getJson(`name`, country)
+      .then((data) => {
+        renderCountry(data[0]);
+        const neighbour = data[0].borders;
+        if (!neighbour) throw new Error('No neighbour found!');
+        return getJson(`alpha`, neighbour);
+      })
+      .then((data) => {
+        renderCountry(data[0], 'neighbour')
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err)
+        renderError(`Something went wrong 😈😈 ${err.message}. Try again`)
+      })
+      .finally(() => {
+        opacityController(1);
+      });
+
+  };
+
+  btn.addEventListener(
+    `click`, function () {
+      getCountryData(`korea`);
+    }
+  );
+ */
+const authCode = `73537470849052694050x95096`;
+const whereAmI = () => {
+  navigator.geolocation.getCurrentPosition(function (pos) {
+    fetch(`https://geocode.xyz/${pos.coords.latitude},${pos.coords.longitude}?geoit=json&auth=${authCode}`)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  });
 };
 
-const getJson = function (firstResource, secondResource) {
-  return fetch(`${url(firstResource, secondResource)}`)
-    .then((response) => {
-      if (!response.ok) throw new Error(`Country no find ${response.status}`);
-      return response.json()
-    })
-};
+// whereAmI();
 
-const getCountryData = function (country) {
 
-  getJson(`name`, country)
-    .then((data) => {
-      renderCountry(data[0]);
-      const neighbour = data[0].borders;
-      if (!neighbour) throw new Error('No neighbour found!');
-      return getJson(`alpha`, neighbour);
-    })
-    .then((data) => {
-      renderCountry(data[0], 'neighbour')
-      console.log(data);
-    })
-    .catch((err) => {
-      console.error(err)
-      renderError(`Something went wrong 😈😈 ${err.message}. Try again`)
-    })
-    .finally(() => {
-      opacityController(1);
-    });
+//  값을 갈아끼운다.
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+}
 
-};
-
-btn.addEventListener(
-  `click`, function () {
-    getCountryData(`japan`);
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
   }
-);
+}
+
+g();
+f();
+
+h();
+f();
+
+//  Example 2
+const boardpassengers = function (n, wait) {
+  // const perGroup = n / 3;
+
+  setTimeout(() => {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`THere are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000;
+boardpassengers(180, 3);
